@@ -15,22 +15,15 @@ class PlayState extends FlxState
 		gameBoard = new entities.GameBoard();
 		add(gameBoard);
     player = new entities.Player();
-    player.setPosition(-48, -48);
     add(player);
+    var tile = gameBoard.getTilePoint(gameBoard.getGoalTileIndex());
+    player.setCurrentTileIndex(gameBoard.getGoalTileIndex());
+    player.setPosition(tile.x, tile.y);
 	}
 
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-    if (FlxG.mouse.justPressed)
-    {
-      var tile = gameBoard.getTileRootAt(FlxG.mouse.getWorldPosition()); 
-      if (tile != null)
-      {
-        FlxG.log.add(tile);
-        player.setPosition(tile.x, tile.y);
-      }
-    }
 	}
 }
