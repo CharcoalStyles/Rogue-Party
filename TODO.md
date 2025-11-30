@@ -1,10 +1,10 @@
 * Board
-  * Square Layout with 2-way linked list (we'll want to be able to go backwards)
-  * proc gen layout (later)
+  [ ] (working) Square Layout with 2-way linked list (we'll want to be able to go backwards)
+  [ ] proc gen layout (later)
 * Players
-  * Generic Player class
-  * Sprites from Oryx
+  [ ] (working) Generic Player class
+  [ ] (working) Sprites from Oryx
 * Board Gameplay
-  * Player turns
-  * Dice/spinner mechanic
-  * Board Movement along linked list squares
+  [ ] Player turns
+  [ ] Dice/spinner mechanic
+  [ ] Board Movement along linked list squares

@@ -34,7 +34,7 @@ class MainMenuState extends FlxState
 		});
 		var mainPage = menu.createPage("Main");
 
-		mainPage.addItem("New Battle", () ->
+		mainPage.addItem("New Game", () ->
 		{
 			FlxG.switchState(PlayState.new);
 		});

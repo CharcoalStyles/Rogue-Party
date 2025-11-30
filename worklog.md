@@ -1,3 +1,11 @@
+# 2025-11-30 18:06:39
+
+Fixed up some stuff the my libs for menu stuff with mouse.
+
+Set up the most basic of basics of a board and player.
+
+It's *a* start...
+
 # 2025-11-30 16:38:40
 
 And here we are again!
