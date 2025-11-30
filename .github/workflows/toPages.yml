@@ -37,7 +37,7 @@ jobs:
       
       - name: Build the HTML5 version
         run: |
-          cd /home/runner/work/questing-puzzles-flx/questing-puzzles-flx
+          cd /home/runner/work/Rouge-Party/Rouge-Party
           haxelib run lime build html5 
       
       - name: Deploy to GitHub Pages
