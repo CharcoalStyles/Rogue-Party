@@ -92,5 +92,5 @@
 
 	<!--Place custom nodes like icons here-->
 	
-	<template path="templates/index.html.template" rename="index.html" if="html5" />
+	<template path="custom-templates" if="html5" />
 </project>
