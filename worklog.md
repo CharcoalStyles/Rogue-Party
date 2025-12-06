@@ -1,3 +1,7 @@
+#2025-12-06 23:52:03
+
+I told you the next thing would be some animation for moving between tiles!
+
 #2025-11-30 21:36:10
 
 Put the board into the GlobalState so other things can access it. TBH, this goes against most of my programming principles, but I think that's just because I haven't made games for a loooooong time. Also, I did dabble with it in Questing Puzzles. It means instead of passing references to the board around, I can just get it from GlobalState. This *will* cause some headaches later when I change something in one place and something else changes a similar thing and the board is different to what my mental model expects. BUT it could lead to some cool bugs/unexpected behaviour, and isn't that part of the fun of roguelikes? Also, if it's good I can claim it was intentional. :D

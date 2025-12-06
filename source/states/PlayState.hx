@@ -18,7 +18,7 @@ class PlayState extends FlxState
     add(player);
     var tile = gameBoard.getTilePoint(gameBoard.getGoalTileIndex());
     player.setCurrentTileIndex(gameBoard.getGoalTileIndex());
-    player.setPosition(tile.x, tile.y);
+    player.forcePosition(tile.x, tile.y);
 	}
 
 	override public function update(elapsed:Float)
