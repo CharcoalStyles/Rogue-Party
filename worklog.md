@@ -1,3 +1,11 @@
+#2025-12-17 10:40:10
+
+It's funny. I've just remade the board generator to do the same as what I hadbefore, but with a step towards a more ProcGen way. This gives me a bit more of a base to start figuring out how to do branching paths and loops. But, wrangling this middle path takes so long, it feels like it would be easier to just make a full ProcGen implementation, then do the work on pathing and branching after.
+
+Everything takes time and it's only once you're deep into an implementation that the edge cases rear the heads. I find the same to be true in my day job as a full stack (mainly web FE) developer.Even when I'm using the same stack as I've done for the past few project *something* changes and makes my estimates look like an idiot made them. Which isn't completely wrong, but still. :D
+
+Anyway, general rant over. I"m hoping to have another commit and log later today to have a first test branch and loop in place. It will mean I'll have to change how the players move,requiring a direction, but that was going to happen anyway.
+
 #2025-12-06 23:52:03
 
 I told you the next thing would be some animation for moving between tiles!
