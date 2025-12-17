@@ -1,6 +1,12 @@
+#2025-12-17 16:35:22
+
+A bit of a refactor around the player movement to be able to show the available directions based on the current tile's adjacency list. It just shows text above the player for now, but it'll be able to be refactored to show arrows or something later. You're also able to switch between moving forward and backward with the Space key.
+
+Now for the next step of making a branching path or two and see if the code works.
+
 #2025-12-17 10:40:10
 
-It's funny. I've just remade the board generator to do the same as what I hadbefore, but with a step towards a more ProcGen way. This gives me a bit more of a base to start figuring out how to do branching paths and loops. But, wrangling this middle path takes so long, it feels like it would be easier to just make a full ProcGen implementation, then do the work on pathing and branching after.
+It's funny. I've just remade the board generator to do the same as what I had before, but with a step towards a more ProcGen way. This gives me a bit more of a base to start figuring out how to do branching paths and loops. But, wrangling this middle path takes so long, it feels like it would be easier to just make a full ProcGen implementation, then do the work on pathing and branching after.
 
 Everything takes time and it's only once you're deep into an implementation that the edge cases rear the heads. I find the same to be true in my day job as a full stack (mainly web FE) developer.Even when I'm using the same stack as I've done for the past few project *something* changes and makes my estimates look like an idiot made them. Which isn't completely wrong, but still. :D
 

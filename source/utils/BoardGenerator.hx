@@ -11,11 +11,15 @@ enum Direction
 	Right;
 }
 
+typedef AdjacentTiles = {
+  var index:Int;
+	var direction:Direction;
+}
+
 typedef AdjacencyWithDirection =
 {
-	var index:Int;
-	var forward:Bool;
-	var direction:Direction;
+  var forwards: Array<AdjacentTiles>;
+  var backwards: Array<AdjacentTiles>;
 }
 
 class BoardGenerator
@@ -25,7 +29,7 @@ class BoardGenerator
 	static inline var TILE_HEIGHT:Int = 24;
 
 	public var goalTileIndex:Int;
-	public var boardAdjacencyList:Array<Array<AdjacencyWithDirection>>;
+	public var boardAdjacencyList:Array<AdjacencyWithDirection>;
 	public var boardMap:FlxTilemap;
 	public var boardData:Array<Array<Int>>;
 
@@ -82,27 +86,30 @@ class BoardGenerator
 		{
 			boardData[1][i] = 1;
       var linearIndex = i + 12;
-      boardAdjacencyList[linearIndex] = [
-        {index: linearIndex + 1, forward: true, direction: Direction.Right},
-        {index: linearIndex - 1, forward: false, direction: Direction.Left}
-      ];
+      boardAdjacencyList[linearIndex] = 
+      {
+        forwards: [
+          {index: linearIndex + 1, direction: Direction.Right}
+        ],
+        backwards: [
+          {index: linearIndex - 1, direction: Direction.Left}
+        ]
+      }
 		}
-
-    // fix path for linearIndex 22
-    // boardAdjacencyList[22] = [
-    //   {index: 21, forward: false, direction: Direction.Left}
-
-    // ];
 
     // add a downward path in the second last column from index 22 to 58
     for (y in 2...7)
     {
       boardData[y][10] = 1;
       var linearIndex = 10 + y * 12;
-      boardAdjacencyList[linearIndex] = [
-        {index: linearIndex + 12, forward: true, direction: Direction.Down},
-        {index: linearIndex - 12, forward: false, direction: Direction.Up}
-      ];
+      boardAdjacencyList[linearIndex] = {
+        forwards: [
+          {index: linearIndex + 12, direction: Direction.Down}
+        ],
+        backwards: [
+          {index: linearIndex - 12, direction: Direction.Up}
+        ]
+      };
     }
 
     // add a leftward path in the second last row from index 58 to 49, remember Haxe can't iterate backwards with for loop
@@ -111,10 +118,14 @@ class BoardGenerator
       var reversedIndex = 10 - i;
       boardData[6][reversedIndex] = 1;
       var linearIndex = reversedIndex + 6 * 12;
-      boardAdjacencyList[linearIndex] = [
-        {index: linearIndex - 1, forward: true, direction: Direction.Left},
-        {index: linearIndex + 1, forward: false, direction: Direction.Right}
-      ];
+      boardAdjacencyList[linearIndex] = {
+        forwards: [
+          {index: linearIndex - 1, direction: Direction.Left}
+        ],
+        backwards: [
+          {index: linearIndex + 1, direction: Direction.Right}
+        ]
+      };
     }
 
     // add an upward path in the second column from index 49 to 25
@@ -122,30 +133,49 @@ class BoardGenerator
     {
       boardData[5 - y][1] = 1;
       var linearIndex = 1 + (5 - y) * 12;
-      boardAdjacencyList[linearIndex] = [
-        {index: linearIndex - 12, forward: true, direction: Direction.Up},
-        {index: linearIndex + 12, forward: false, direction: Direction.Down}
-      ];
+      boardAdjacencyList[linearIndex] = {
+        forwards: [
+          {index: linearIndex - 12, direction: Direction.Up}
+        ],
+        backwards: [
+          {index: linearIndex + 12, direction: Direction.Down}
+        ]
+      };
     }
 
    //fix the adjacencyList for the corners
-   boardAdjacencyList[13] = [
-     {index: 14, forward: true, direction: Direction.Right},
-     {index: 25, forward: false, direction: Direction.Down}
-   ];
-    boardAdjacencyList[22] = [
-      {index: 34, forward: true, direction: Direction.Down},
-      {index: 21, forward: false, direction: Direction.Left}
-    ];
-    boardAdjacencyList[82] = [
-      {index: 81, forward: true, direction: Direction.Left},
-      {index: 70, forward: false, direction: Direction.Up}
-    ];
-    boardAdjacencyList[73] = [
-      {index: 61, forward: true, direction: Direction.Up},
-      {index: 74, forward: false, direction: Direction.Right}
-    ];
-
+   boardAdjacencyList[13] = {
+     forwards: [
+       {index: 14, direction: Direction.Right}
+     ],
+     backwards: [
+       {index: 25, direction: Direction.Down}
+     ]
+   };
+    boardAdjacencyList[22] = {
+      forwards: [
+        {index: 34, direction: Direction.Down}
+      ],
+      backwards: [
+        {index: 21, direction: Direction.Left}
+      ]
+    };
+    boardAdjacencyList[82] = {
+      forwards: [
+        {index: 81, direction: Direction.Left}
+      ],
+      backwards: [
+        {index: 70, direction: Direction.Up}
+      ]
+    };
+    boardAdjacencyList[73] = {
+      forwards: [
+        {index: 61, direction: Direction.Up}
+      ],
+      backwards: [
+        {index: 74, direction: Direction.Right}
+      ]
+    };
 
 		// boardAdjacencyList[13] = [{index: 14, forward: true}, {index: 25, forward: false}];
 
