@@ -1,3 +1,11 @@
+# 2025-12-17 18:05:20
+
+Oooooof, fiddling with 2D arrays nearly always does my head in, even worse when I have to translate to a linear index.
+
+But, it works! THere's a "shortcut" path, and it works backwards and forwards, showing the user which directions they can go from their current tile.
+
+I guess the next thing is making a guided drunken walk to make a more complex board with branching paths and loops? Or possibly moving on to the actual gameplay of dice rolls, turns with multiple players, and things that happen on tiles.
+
 #2025-12-17 16:35:22
 
 A bit of a refactor around the player movement to be able to show the available directions based on the current tile's adjacency list. It just shows text above the player for now, but it'll be able to be refactored to show arrows or something later. You're also able to switch between moving forward and backward with the Space key.

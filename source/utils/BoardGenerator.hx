@@ -63,8 +63,8 @@ class BoardGenerator
 		// 	[0, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0], // 12-23
 		// 	[0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0], // 24-35
 		// 	[0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0], // 36-47
-		// 	[0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0], // 48-59
-		// 	[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0], // 60-71
+		// 	[0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0], // 48-59
+		// 	[0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0], // 60-71
 		// 	[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0], // 72-83
 		// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 84-95
 		// ];
@@ -177,6 +177,27 @@ class BoardGenerator
       ]
     };
 
+    //start first loop
+    //adjust adjacency list for tile 22 to have downward path to 34
+    boardAdjacencyList[20].forwards.push({index: 32, direction: Direction.Down});
+
+    for (y in 2...6)
+    {
+      boardData[y][8] = 1;
+      var linearIndex = 8 + y * 12;
+      boardAdjacencyList[linearIndex] = {
+        forwards: [
+          {index: linearIndex + 12, direction: Direction.Down}
+        ],
+        backwards: [
+          {index: linearIndex - 12, direction: Direction.Up}
+        ]
+      };
+    }
+
+    //adjust adjacency list for tile 80 to have a reverse upward path to 68
+    boardAdjacencyList[80].backwards.push({index: 68, direction: Direction.Up});
+
 		// boardAdjacencyList[13] = [{index: 14, forward: true}, {index: 25, forward: false}];
 
 		// // for 14 to 21
@@ -202,7 +223,7 @@ class BoardGenerator
 		// //81 to 74
 		// var i = 81;
 		// while (i > 73) {
-		//     boardAdjacencyList[i] = [{index: i - 1, forward: true}, {index: i + 1, forward: false}];
+		//     boardA djacencyList[i] = [{index: i - 1, forward: true}, {index: i + 1, forward: false}];
 		//     i--;
 		// }
 
